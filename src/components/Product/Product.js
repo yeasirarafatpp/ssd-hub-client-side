@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActions, Container, Grid } from '@mui/material';
+import { Button, CardActions, Grid } from '@mui/material';
 
 const Product = ({ product }) => {
     const { name, img, price, desc } = product;
@@ -12,9 +12,9 @@ const Product = ({ product }) => {
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
-                    height="100%"
+                    height="80%"
                     image={img}
-                    alt="green iguana"
+                    alt="Product Image"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
