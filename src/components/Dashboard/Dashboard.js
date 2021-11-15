@@ -16,7 +16,6 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import { Button } from '@mui/material';
-import useAuth from '../../hooks/useAuth';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import Payment from '../Payment/Payment';
 import AdminRoute from '../AdminRoute/AdminRoute';
@@ -41,7 +40,7 @@ function Dashboard(props) {
             <br />
             <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
             <br />
-            <Link to={`${url}/payment`}><Button color="inherit">Payment</Button></Link>
+            <Link to={`${url}/payment`}><Button color="inherit">Paymentf</Button></Link>
             <Box>
                 <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
                 <Link to={`${url}/addreview`}><Button color="inherit">Add Review</Button></Link>
