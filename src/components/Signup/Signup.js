@@ -1,20 +1,41 @@
-import { Button, TextField } from '@mui/material';
-import React from 'react';
+import { Alert, Button, CircularProgress, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 const Signup = () => {
-    const handleSignupSubmit = (e) => {
-        console.log('form signup')
-        e.preventDefault();
+    const [loginData, setLoginData] = useState([]);
+    const { user, registerUser, isLoading, authError } = useAuth();
+    const history = useHistory();
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const data = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = data;
+        setLoginData(newLoginData)
     }
+    const handleLoginSubmit = e => {
+        e.preventDefault();
+        if (loginData.password !== loginData.RePassword) {
+            alert('Your Password did not matched');
+            return
+        }
+        registerUser(loginData.email, loginData.password, history);
+    }
+
     return (
         <div>
             <h2>Please Sign UP</h2>
-            <form onSubmit={handleSignupSubmit}>
+            {isLoading && <CircularProgress />}
+            {user?.email && <Alert severity="success">User Created successfully!</Alert>}
+            {authError && <Alert severity="error">{authError}</Alert>}
+            <form onSubmit={handleLoginSubmit}>
                 <TextField
                     type="text"
                     label="Name"
                     name="name"
                     variant="standard"
+                    onChange={handleOnChange}
                 />
                 <br />
                 <TextField
@@ -22,6 +43,7 @@ const Signup = () => {
                     label="Email"
                     name="email"
                     variant="standard"
+                    onChange={handleOnChange}
                 />
                 <br />
                 <TextField
@@ -29,6 +51,7 @@ const Signup = () => {
                     label="Password"
                     name="password"
                     variant="standard"
+                    onChange={handleOnChange}
                 />
                 <br />
                 <TextField
@@ -36,6 +59,7 @@ const Signup = () => {
                     label="Confirm Password"
                     name="RePassword"
                     variant="standard"
+                    onChange={handleOnChange}
                 />
                 <br />
                 <br />
