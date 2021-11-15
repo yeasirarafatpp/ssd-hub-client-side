@@ -9,6 +9,7 @@ import Signup from './components/Signup/Signup';
 import Footer from './components/Footer/Footer';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Dashboard from './components/Dashboard/Dashboard';
+import BookProduct from './components/BookProduct/BookProduct';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
+            </Route>
+            <Route path="/products/:productId">
+              <BookProduct></BookProduct>
             </Route>
             <Route path="/login">
               <Login></Login>
